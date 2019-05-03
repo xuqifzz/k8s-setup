@@ -17,6 +17,7 @@ bash init-apiserver.sh
 bash init-controller-manager.sh
 bash init-scheduler.sh
 bash init-docker.sh
+bash init-kubelet.sh
 
 
 
