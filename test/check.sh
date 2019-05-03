@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+source /opt/k8s/bin/environment.sh
 echo ">>>>> 检查各 Node 上的 Pod IP 连通性"
 kubectl get pods  -o wide|grep nginx-ds
 

@@ -3,6 +3,7 @@ set -e
 
 echo ">>>>> 创建 kube-proxy 证书"
 cd /opt/k8s/work/cert
+source /opt/k8s/bin/environment.sh
 cfssl gencert -ca=/opt/k8s/work/cert/ca.pem \
   -ca-key=/opt/k8s/work/cert/ca-key.pem \
   -config=/opt/k8s/work/cert/ca-config.json \

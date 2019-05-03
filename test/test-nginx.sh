@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+source /opt/k8s/bin/environment.sh
 echo ">>>>> 检查节点状态"
 kubectl get nodes
 
