@@ -24,3 +24,6 @@ bash check-docker.sh
 echo ">>>>> 检查 kubelet运行状态"
 bash check-kubelet.sh
 
+echo ">>>>> 检查 kube-proxy运行状态"
+bash check-kube-proxy.sh
+
