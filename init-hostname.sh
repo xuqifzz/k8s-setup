@@ -4,6 +4,7 @@ source /tmp/k8s-setup/node-ip.sh
 
 echo ">>>>> 配置Master hosts..."
 ssh-keyscan -H $MASTER_IP  >> ~/.ssh/known_hosts
+ssh-keyscan -H master  >> ~/.ssh/known_hosts
 echo $NODE1_IP node1 node1 >> /etc/hosts
 echo $NODE2_IP node2 node2 >> /etc/hosts
 

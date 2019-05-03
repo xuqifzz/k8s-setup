@@ -24,7 +24,7 @@ Description=Docker Application Container Engine
 Documentation=http://docs.docker.io
 
 [Service]
-WorkingDirectory=##DOCKER_DIR##
+WorkingDirectory=/data/k8s/docker
 Environment="PATH=/opt/k8s/bin:/bin:/sbin:/usr/bin:/usr/sbin"
 EnvironmentFile=-/run/flannel/docker
 ExecStart=/opt/k8s/bin/dockerd $DOCKER_NETWORK_OPTIONS
@@ -42,7 +42,7 @@ EOF
 
 cd /opt/k8s/work
 source /opt/k8s/bin/environment.sh
-sed -i -e "s/##DOCKER_DIR##/${DOCKER_DIR}/" docker.service
+#sed -i -e "s/##DOCKER_DIR##/${DOCKER_DIR}/" docker.service
 for node_ip in ${NODE_IPS[@]}
   do
     echo ">>> ${node_ip}"
