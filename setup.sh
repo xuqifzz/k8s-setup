@@ -9,6 +9,9 @@ bash init-cfssl.sh
 bash init-cert.sh
 bash init-kubectl.sh
 bash init-etcd.sh
+#bash check-etcd.sh
+bash init-flannel.sh
+
 
 
 

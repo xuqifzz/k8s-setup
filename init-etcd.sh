@@ -119,12 +119,12 @@ for node_ip in ${NODE_IPS[@]}
     ssh root@${node_ip} "systemctl daemon-reload && systemctl enable etcd && systemctl restart etcd " &
   done
 
-cd /opt/k8s/work
-source /opt/k8s/bin/environment.sh
-for node_ip in ${NODE_IPS[@]}
-  do
-    echo ">>> ${node_ip}"
-    ssh root@${node_ip} "systemctl status etcd|grep Active"
-  done
+# cd /opt/k8s/work
+# source /opt/k8s/bin/environment.sh
+# for node_ip in ${NODE_IPS[@]}
+#   do
+#     echo ">>> ${node_ip}"
+#     ssh root@${node_ip} "systemctl status etcd|grep Active"
+#   done
 
 echo ">>>>> 启动 etcd 服务完毕"

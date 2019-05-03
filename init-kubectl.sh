@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e 
-source /tmp/k8s-setup/node-ip.sh
+source /opt/k8s/bin/environment.sh
 
 echo ">>>>> 下载kubectl..."
 cd /opt/k8s/work
