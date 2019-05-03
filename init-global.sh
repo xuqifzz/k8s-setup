@@ -1,29 +1,31 @@
 #!/bin/bash
 set -e
-echo "安装依赖包..."
+echo ">>>>> 安装依赖包..."
 echo 'PATH=/opt/k8s/bin:$PATH' >> /root/.bashrc
 yum install -y epel-release
 yum install -y conntrack ipvsadm ipset jq iptables curl sysstat libseccomp
 /usr/sbin/modprobe ip_vs
 
-echo "关闭防火墙..."
+echo ">>>>> 关闭防火墙..."
 systemctl stop firewalld
 systemctl disable firewalld
 iptables -F && iptables -X && iptables -F -t nat && iptables -X -t nat
 iptables -P FORWARD ACCEPT
 
-echo "关闭 swap 分区..."
+echo ">>>>> 关闭 swap 分区..."
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
-echo "关闭 SELinux..."
+echo ">>>>> 关闭 SELinux..."
+set +e
 setenforce 0
 sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
+set -e
 
-echo "加载内核模块..."
+echo ">>>>> 加载内核模块..."
 modprobe br_netfilter
 
-echo "优化内核参数..."
+echo ">>>>> 优化内核参数..."
 cat > kubernetes.conf <<EOF
 net.bridge.bridge-nf-call-iptables=1
 net.bridge.bridge-nf-call-ip6tables=1
@@ -43,17 +45,17 @@ cp kubernetes.conf  /etc/sysctl.d/kubernetes.conf
 sysctl -p /etc/sysctl.d/kubernetes.conf
 
 
-echo "设置系统时区..."
+echo ">>>>> 设置系统时区..."
 timedatectl set-timezone Asia/Shanghai
 timedatectl set-local-rtc 0
 systemctl restart rsyslog
 systemctl restart crond
 ntpdate cn.pool.ntp.org
 
-echo "关闭无关服务..."
+echo ">>>>> 关闭无关服务..."
 systemctl stop postfix && systemctl disable postfix
 
-echo "设置 rsyslogd 和 systemd journal..."
+echo ">>>>> 设置 rsyslogd 和 systemd journal..."
 mkdir /var/log/journal # 持久化保存日志的目录
 mkdir /etc/systemd/journald.conf.d
 cat > /etc/systemd/journald.conf.d/99-prophet.conf <<EOF
@@ -82,7 +84,10 @@ ForwardToSyslog=no
 EOF
 systemctl restart systemd-journald
 
-echo "创建相关目录..."
+echo ">>>>> 创建相关目录..."
 mkdir -p /opt/k8s/{bin,work} /etc/kubernetes/cert /etc/etcd/cert
+echo ">>>>> 系统初始化和全局变量配置完成"
+
+
 
 

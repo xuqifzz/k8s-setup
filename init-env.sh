@@ -43,6 +43,12 @@ ssh-keyscan -H node2  >> ~/.ssh/known_hosts
 ssh root@node2 "echo $MASTER_IP master master >> /etc/hosts"
 ssh root@node2 "echo $NODE1_IP node1 node1 >> /etc/hosts"
 
+sed -i "s/192.168.100.246/$MASTER_IP/g" environment.sh
+sed -i "s/192.168.100.247/$NODE1_IP/g" environment.sh
+sed -i "s/192.168.100.248/$NODE2_IP/g" environment.sh
+
+
+
 
 
 
