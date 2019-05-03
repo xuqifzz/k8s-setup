@@ -3,7 +3,7 @@ set -e
 echo ">>>>> 安装依赖包..."
 echo 'PATH=/opt/k8s/bin:$PATH' >> /root/.bashrc
 yum install -y epel-release
-yum install -y conntrack ipvsadm ipset jq iptables curl sysstat libseccomp
+yum install -y conntrack ipvsadm ipset jq iptables curl sysstat libseccomp net-tools
 /usr/sbin/modprobe ip_vs
 
 echo ">>>>> 关闭防火墙..."
