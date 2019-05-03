@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e 
+export SETUP_HOME=`pwd`
 bash init-ip.sh
 bash init-ssh-key.sh
 bash init-hostname.sh
