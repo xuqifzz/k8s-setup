@@ -11,6 +11,7 @@ systemctl stop firewalld
 systemctl disable firewalld
 iptables -F && iptables -X && iptables -F -t nat && iptables -X -t nat
 iptables -P FORWARD ACCEPT
+echo "/sbin/iptables -P FORWARD ACCEPT" >> /etc/rc.local
 
 echo ">>>>> 关闭 swap 分区..."
 swapoff -a

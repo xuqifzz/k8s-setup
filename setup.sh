@@ -13,6 +13,10 @@ bash init-etcd.sh
 bash init-flannel.sh
 bash init-kube-nginx.sh
 bash init-master.sh
+bash init-apiserver.sh
+bash init-controller-manager.sh
+bash init-scheduler.sh
+bash init-docker.sh
 
 
 

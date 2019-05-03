@@ -135,4 +135,6 @@ echo ">>>>> 启动 kube-apiserver 服务完毕"
 
 
 echo ">>>>> 授予 kubernetes 证书访问 kubelet API 的权限"
+sleep 5
 kubectl create clusterrolebinding kube-apiserver:kubelet-apis --clusterrole=system:kubelet-api-admin --user kubernetes
+

@@ -21,9 +21,7 @@ for node_ip in ${NODE_IPS[@]}
 
 echo ">>>>> 分发kube server完毕"
 
-bash init-apiserver.sh
-bash init-controller-manager.sh
-bash init-scheduler.sh
+#useradd –m docker
 
 
 
