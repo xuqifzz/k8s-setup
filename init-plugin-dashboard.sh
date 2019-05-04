@@ -54,4 +54,5 @@ kubectl config set-context default \
 # 设置默认上下文
 kubectl config use-context default --kubeconfig=dashboard.kubeconfig
 /bin/cp -f dashboard.kubeconfig /opt/k8s/kube-nginx/html/dashboard.kubeconfig
+chmod +r /opt/k8s/kube-nginx/html/dashboard.kubeconfig
 echo ">>>>> 部署dashboard插件完毕"
