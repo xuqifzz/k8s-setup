@@ -13,5 +13,5 @@ for node_ip in ${NODE_IPS[@]}
     scp /tmp/k8s-setup/environment.sh root@${node_ip}:/opt/k8s/bin/
     ssh root@${node_ip} "chmod +x /opt/k8s/bin/*"
   done
-
+echo "source /opt/k8s/bin/environment.sh" >> /root/.bashrc
 echo ">>>>> 分发environment.sh完毕"

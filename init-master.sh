@@ -3,7 +3,7 @@ set -e
 cd /opt/k8s/work
 source /opt/k8s/bin/environment.sh
 
-echo ">>>>> 下载kube server..."
+kubectl create -f coredns.yaml
 wget https://dl.k8s.io/v1.12.3/kubernetes-server-linux-amd64.tar.gz
 tar -xzvf kubernetes-server-linux-amd64.tar.gz
 cd kubernetes

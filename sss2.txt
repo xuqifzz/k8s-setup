@@ -1,0 +1,1 @@
+https://45.32.50.13:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy

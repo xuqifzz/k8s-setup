@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e 
 export SETUP_HOME=`pwd`
+echo SETUP_HOME=$SETUP_HOME >> /root/.bashrc
+
 bash init-ip.sh
 bash init-ssh-key.sh
 bash init-hostname.sh
@@ -19,6 +21,11 @@ bash init-scheduler.sh
 bash init-docker.sh
 bash init-kubelet.sh
 bash init-kube-proxy.sh
+bash init-plugin-dns.sh
+bash init-plugin-dashboard.sh
+bash init-plugin-heapster.sh
+bash init-welcome.sh
+
 
 
 
